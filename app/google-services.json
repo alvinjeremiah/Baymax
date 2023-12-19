@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "899192686992",
+    "project_id": "baymax-5bbcc",
+    "storage_bucket": "baymax-5bbcc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:899192686992:android:a012635c55e3963ec3cb15",
+        "android_client_info": {
+          "package_name": "com.example.baymax"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "899192686992-70voe7rnmeub3k1s16kujocdd2s7gefj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxD8sGqciBe9ZUX27fNXFImNgDiNVKWVQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "899192686992-70voe7rnmeub3k1s16kujocdd2s7gefj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:899192686992:android:6f72a7472012f8adc3cb15",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "899192686992-70voe7rnmeub3k1s16kujocdd2s7gefj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxD8sGqciBe9ZUX27fNXFImNgDiNVKWVQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "899192686992-70voe7rnmeub3k1s16kujocdd2s7gefj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
