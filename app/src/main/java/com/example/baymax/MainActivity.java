@@ -24,10 +24,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.ktx.Firebase;
+
+
 
 import java.util.HashMap;
-import java.util.Objects;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,12 +42,24 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
 
         button = findViewById(R.id.button);
         imageView = findViewById(R.id.imageView2);
 
+
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
+
+        // Check if the user is already signed in
+        FirebaseUser currentUser = auth.getCurrentUser();
+        if (currentUser != null) {
+            // User is already signed in, redirect to the main activity
+            startActivity(new Intent(MainActivity.this, Home.class));
+            finish(); // Close the current activity
+        }
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -115,6 +128,8 @@ public class MainActivity extends AppCompatActivity {
                             map.put("profile",user.getPhotoUrl().toString());
 
                             database.getReference().child("users").child(user.getUid()).setValue(map);
+
+                            Toast.makeText(MainActivity.this,"Login Successful",Toast.LENGTH_SHORT).show();
 
                             Intent intent = new Intent(MainActivity.this,Home.class);
                             startActivity(intent);
