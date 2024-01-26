@@ -3,13 +3,18 @@ package com.example.baymax;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.material.bottomappbar.BottomAppBar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.ktx.Firebase;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -17,10 +22,22 @@ import java.util.Date;
 
 public class Home extends AppCompatActivity {
 
+    FirebaseAuth auth;
+    BottomAppBar bottomAppBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        auth= FirebaseAuth.getInstance();
         setContentView(R.layout.activity_home);
+
+
+        if (bottomAppBar != null) {
+            // Only try to call methods if bottomAppBar is not null
+            bottomAppBar.replaceMenu(R.menu.bottom_app_bar_menu);
+        }
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
 
         TextView textMessage = findViewById(R.id.textView3);
 
@@ -37,7 +54,7 @@ public class Home extends AppCompatActivity {
             int hour = cal.get(Calendar.HOUR_OF_DAY);
 
             // Set greeting
-            String greeting = null;
+            String greeting = "Hello";
             if (hour >= 6 && hour < 12) {
                 greeting = "Good Morning!";
             } else if (hour >= 12 && hour < 17) {
@@ -52,4 +69,32 @@ public class Home extends AppCompatActivity {
         }
     }
 
+
+
+
+
+    public void onHappy(View view){
+        Intent i = new Intent(this, happy.class);
+        startActivity(i);
+
+    }
+
+    public void onSad(View view){
+        Intent i = new Intent(this, unhappy.class);
+        startActivity(i);
+
+    }
+    public void onReminder(View view){
+        Intent i = new Intent(this, reminder.class);
+        startActivity(i);
+
+    }
+
+    public void onSettings(View view){
+        Intent i = new Intent(this, settings.class);
+        startActivity(i);
+
+    }
+
 }
+

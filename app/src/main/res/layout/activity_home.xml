@@ -7,6 +7,25 @@
     android:layout_height="match_parent"
     tools:context=".Home">
 
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/Toolbar"
+            android:background="@color/red"
+            app:title="Baymax"
+            app:titleTextColor="@color/white"
+                />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:padding="20dp"
+            android:layout_below="@id/Toolbar"
+            android:text="Good Morning! How are you feeling today"
+            android:textSize="25dp" />
+
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -16,6 +35,8 @@
             android:id="@+id/linear"
             >
 
+
+
                 <ImageButton
                     android:id="@+id/imageButton"
                     android:layout_width="wrap_content"
@@ -24,7 +45,8 @@
                     android:scaleType="fitXY"
                     android:background="@color/white"
                     android:contentDescription="Happy"
-                    app:srcCompat="@drawable/h1" />
+                    app:srcCompat="@drawable/h1"
+                    android:onClick="onHappy"/>
 
                 <ImageButton
                     android:id="@+id/imageButton2"
@@ -44,17 +66,11 @@
                     android:scaleType="fitXY"
                     android:background="@color/white"
                     android:contentDescription="Unhappy"
-                    android:src="@drawable/h3" />
+                    android:src="@drawable/h3"
+                    android:onClick="onSad"/>
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:padding="20dp"
-            android:text="Good Morning! How are you feeling today"
-            android:textSize="25dp" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -98,5 +114,63 @@
             android:paddingLeft="20dp"
             android:text="Suggested Activites"
             android:textSize="20dp" />
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottomAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:fabAlignmentMode="end"
+            app:fabCradleMargin="10dp"
+            app:fabCradleRoundedCornerRadius="15dp"
+            app:fabCradleVerticalOffset="10dp"
+            app:hideOnScroll="true"
+            app:menu="@menu/bottom_app_bar_menu" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                        <ImageButton
+                            android:id="@+id/menu_item_one"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/hearts"
+                            android:contentDescription="Item One"
+                            android:layout_weight="1"
+                            android:onClick="onHealth"/>
+
+                        <ImageButton
+                            android:id="@+id/menu_item_two"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/calendar"
+                            android:contentDescription="Item Two"
+                            android:layout_weight="1"
+                            android:onClick="onReminder"/>
+
+                        <ImageButton
+                            android:id="@+id/menu_item_three"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/setting"
+                            android:contentDescription="Item Three"
+                            android:layout_weight="1"
+                            android:onClick="onSettings"/>
+                </LinearLayout>
+
+                </com.google.android.material.bottomappbar.BottomAppBar>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </RelativeLayout>

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+//import com.chaquo.python.Python;
+//import com.chaquo.python.android.AndroidPlatform;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -27,18 +30,20 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 
+
 import java.util.HashMap;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    Button button;
+    Button button,button2;
     ImageView imageView;
     FirebaseAuth auth;
     FirebaseDatabase database;
     GoogleSignInClient mGoogleSignInClient;
     int RC_SIGN_IN = 20;
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -46,20 +51,27 @@ public class MainActivity extends AppCompatActivity {
             getSupportActionBar().hide();
         }
 
+//        if (! Python.isStarted()) {
+//            Python.start(new AndroidPlatform(this));
+//        }
+
         button = findViewById(R.id.button);
+        button2 = findViewById(R.id.button2);
         imageView = findViewById(R.id.imageView2);
 
 
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
 
-        // Check if the user is already signed in
-        FirebaseUser currentUser = auth.getCurrentUser();
-        if (currentUser != null) {
-            // User is already signed in, redirect to the main activity
-            startActivity(new Intent(MainActivity.this, Home.class));
-            finish(); // Close the current activity
-        }
+//        // Check if the user is already signed in
+//        FirebaseUser currentUser = auth.getCurrentUser();
+//        if (currentUser != null) {
+//            // User is already signed in, redirect to the main activity
+//            startActivity(new Intent(MainActivity.this, Home.class));
+//            finish(); // Close the current activity
+//        }
+
+
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -75,6 +87,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    //Button Onclick to Registration Page
+    public void onRegister(View view){
+        Intent i = new Intent(this, register.class);
+        startActivity(i);
+    }
+
+    //Button Onclick to Login Page
+    public void onLogin(View view){
+        Intent i = new Intent(this, login.class);
+        startActivity(i);
+    }
+
         private void googleSignIn(){
             Intent intent = mGoogleSignInClient.getSignInIntent();
             startActivityForResult(intent,RC_SIGN_IN);
